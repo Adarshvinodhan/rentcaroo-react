@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import api from '../axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { useNavigate } from 'react-router-dom'; 
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import FontAwesome icons
-import { Link } from 'react-router-dom'; // Import Link for routing
+import { Link } from 'react-router-dom'; 
+import { ImSpinner2 } from 'react-icons/im'; // Import Spinner icon
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -13,8 +14,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [loading, setLoading] = useState(false); // Track loading state
 
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   // Handle form field changes
   const handleChange = (e) => {
@@ -27,6 +29,7 @@ const Login = () => {
     e.preventDefault();
     setError(null);
     setSuccess(null);
+    setLoading(true); // Start loading
 
     const { email, password } = formData;
 
@@ -42,6 +45,8 @@ const Login = () => {
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong.');
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -50,7 +55,7 @@ const Login = () => {
   <div className="absolute top-10 left-10 text-gray-700 z-10">
     <h1 className="text-4xl font-bold">Welcome to <span className='text-blue-600'>RentCaroo</span></h1>
     <p className="mt-4 text-lg font-medium">Stop Asking <span className='font-bold'>"Machi Vandikedaikuma from Now"</span></p>
-    <p className="mt-2 text-sm">Affordable. Reliable. Fast.</p>
+    <p className="mt-2 text-sm">Affordable. Reliable. Trust.</p>
   </div>
 
   <div className="relative z-20 w-full max-w-md p-8 bg-white rounded-lg shadow-xl border border-gray-300">
@@ -99,11 +104,19 @@ const Login = () => {
 
       <button
         type="submit"
-        className="w-full px-4 py-3 font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-500 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+        className="w-full px-4 py-3 font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-500 focus:ring-2 focus:ring-blue-400 focus:outline-none flex justify-center items-center"
+        disabled={loading} // Disable button during loading
       >
-        Login
+        {loading ? (
+          <>
+            <ImSpinner2 className="animate-spin mr-2" size={20} /> Logging in...
+          </>
+        ) : (
+          'Login'
+        )}
       </button>
     </form>
+
 
     <div className="mt-4 text-center">
       <p className="text-sm text-gray-600">
@@ -115,8 +128,6 @@ const Login = () => {
     </div>
   </div>
 </div>
-
-
   );
 };
 

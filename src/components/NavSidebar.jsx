@@ -9,7 +9,6 @@ const NavSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
-  console.log(isOpen);
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");

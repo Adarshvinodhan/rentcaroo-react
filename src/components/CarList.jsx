@@ -9,7 +9,13 @@ const CarList = () => {
     setCars((prevCars) => prevCars.filter((car) => car._id !== deletedCarId));
   };
 
-  if (loading) return <p className="text-center text-white">Loading...</p>;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="spinner-border animate-spin w-8 h-8 border-4 border-t-transparent border-blue-500 rounded-full"></div>
+      </div>
+    );
+  }
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (

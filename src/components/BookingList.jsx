@@ -21,7 +21,13 @@ const BookingList = () => {
     fetchBookings();
   }, []);
 
-  if (loading) return <div className="text-center mt-10">Loading...</div>;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="spinner-border animate-spin w-8 h-8 border-4 border-t-transparent border-blue-500 rounded-full"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="sm:pl-64 sm:pt-16">

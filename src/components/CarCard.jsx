@@ -36,7 +36,7 @@ const CarCard = ({ car,onDelete }) => {
   return (
 <div
   onClick={handleCardClick}
-  className="max-w-sm mx-auto bg-white text-black shadow-lg rounded-lg overflow-hidden border border-gray-300 cursor-pointer hover:shadow-xl transition-shadow duration-300"
+  className="max-w-sm bg-white text-black shadow-lg rounded-lg overflow-hidden border border-gray-300 cursor-pointer hover:shadow-xl transition-shadow duration-300"
 >
   <img
     className="w-full h-48 object-cover"

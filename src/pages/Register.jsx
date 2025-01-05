@@ -40,7 +40,7 @@ const Register = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-4 relative">
       <div className="absolute top-10 left-10 text-gray-700 z-10">
-        <h1 className="text-4xl font-bold">Welcome to <span className="text-blue-600">RentCaroo</span></h1>
+      <h1 className="text-4xl font-bold">Welcome to Rent<span className='text-blue-600 italic'>Caroo</span></h1>
       </div>
       <div className="relative z-20 w-full max-w-md p-8 bg-white rounded-lg shadow-xl border border-gray-300">
         <h2 className="mb-6 text-3xl font-bold text-center text-black">Create Account</h2>

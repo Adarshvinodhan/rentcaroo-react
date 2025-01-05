@@ -53,7 +53,7 @@ const Login = () => {
   return (
 <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-4 relative">
   <div className="absolute top-10 left-10 text-gray-700 z-10">
-    <h1 className="text-4xl font-bold">Welcome to <span className='text-blue-600'>RentCaroo</span></h1>
+    <h1 className="text-4xl font-bold">Welcome to Rent<span className='text-blue-600 italic'>Caroo</span></h1>
     <p className="mt-4 text-lg font-medium">Stop Asking <span className='font-bold'>"Machi Vandikedaikuma from Now"</span></p>
     <p className="mt-2 text-sm">Affordable. Reliable. Trust.</p>
   </div>

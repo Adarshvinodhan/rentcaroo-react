@@ -26,7 +26,7 @@ const NavSidebar = () => {
           {/* Logo */}
           <div className="flex-1 text-center text-2xl font-bold text-black sm:text-left">
             <Link to="/" className="hover:text-gray-700 transition duration-200">
-              RentCaroo
+              Rent<span className="text-blue-600 italic">Caroo</span>
             </Link>
           </div>
 
@@ -54,18 +54,17 @@ const NavSidebar = () => {
             {user.role === "user" && (
               <>
                 <li>
-                  <Link
-                    to="/"
-                    className="text-gray-700 hover:text-blue-500"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Cars
-                  </Link>
+                <Link to="/"
+                  className="relative text-gray-700 hover:text-blue-500 transition duration-200 before:content-[''] before:absolute before:-bottom-1.5 before:left-0 before:w-full before:h-[2px] before:bg-blue-500 before:scale-x-0 before:origin-left hover:before:scale-x-100 before:transition-transform before:duration-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Cars
+                </Link>
                 </li>
                 <li>
                   <Link
                     to="/profile"
-                    className="text-gray-700 hover:text-blue-500"
+                    className="relative text-gray-700 hover:text-blue-500 transition duration-200 before:content-[''] before:absolute before:-bottom-1.5 before:left-0 before:w-full before:h-[2px] before:bg-blue-500 before:scale-x-0 before:origin-left hover:before:scale-x-100 before:transition-transform before:duration-300"
                     onClick={() => setIsOpen(false)}
                   >
                     Profile
@@ -74,7 +73,7 @@ const NavSidebar = () => {
                 <li>
                   <Link
                     to="/booking"
-                    className="text-gray-700 hover:text-blue-500"
+                    className="relative text-gray-700 hover:text-blue-500 transition duration-200 before:content-[''] before:absolute before:-bottom-1.5 before:left-0 before:w-full before:h-[2px] before:bg-blue-500 before:scale-x-0 before:origin-left hover:before:scale-x-100 before:transition-transform before:duration-300"
                     onClick={() => setIsOpen(false)}
                   >
                     Bookings

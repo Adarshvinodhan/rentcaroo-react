@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import api from '../axios';
-import {jwtDecode} from 'jwt-decode';
+import { useAuth } from '../context/AuthContext';
 
 const BookingCard = ({ booking }) => {
   const [showReviewForm, setShowReviewForm] = useState(false);
@@ -10,10 +10,9 @@ const BookingCard = ({ booking }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem('token');
-    const decoded = jwtDecode(token);
-    const user_id = decoded.id;
-    const username = decoded.username;
+    const {user} = useAuth();
+    const user_id = user.id;
+    const username = user.username;
 
     const reviewData = {
       userId: user_id,

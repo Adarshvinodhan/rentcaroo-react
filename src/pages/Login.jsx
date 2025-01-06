@@ -24,6 +24,14 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // Autofill admin credentials
+  const autofillAdminCredentials = () => {
+    setFormData({
+      email: 'adarshvinodhan@gmail.com',
+      password: 'test',
+    });
+  };
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +50,8 @@ const Login = () => {
       setSuccess('Login successful!');
       const token = response.data.token;
       localStorage.setItem('token', token);
-      navigate('/');
+      setTimeout(() => {navigate('/')}, 1000);
+     
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong.');
     } finally {
@@ -117,6 +126,12 @@ const Login = () => {
       </button>
     </form>
 
+    <button 
+      onClick={autofillAdminCredentials}
+      className="w-full mt-4 px-4 py-3 font-semibold text-white bg-gray-600 rounded-lg shadow-md hover:bg-gray-500 focus:ring-2 focus:ring-gray-400 focus:outline-none"
+    >
+      Login as Admin
+    </button>
 
     <div className="mt-4 text-center">
       <p className="text-sm text-gray-600">

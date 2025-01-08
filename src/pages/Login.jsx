@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import api from '../axios';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import FontAwesome icons
 import { Link } from 'react-router-dom'; 
@@ -43,7 +43,7 @@ const Login = () => {
 
     try {
       // Make API request
-      const response = await api.post('/api/auth/login', {
+      const response = await axios.post('https://car-rental-server-pm4i.onrender.com/api/auth/login', {
         email,
         password,
       });

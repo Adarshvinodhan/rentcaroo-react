@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -12,26 +13,115 @@ import AdminRoutes from "./routes/AdminRoutes";
 import AdminBookingList from "./components/admin/AdminBookingList";
 import UserList from "./components/admin/UserList";
 import BookingList from "./components/BookingList";
-
+import { AuthProvider } from "./context/AuthContext.jsx";
 
 function App() {
   return (
     <Router>
       <Routes>
         {/* Public Routes */}
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/unauthorized" element={<h1>Unauthorized</h1>} />
-        {/* Protected Routes inside Layout */}
-        <Route path="/" element={<ProtectedRoutes><Layout><CarList/></Layout></ProtectedRoutes>}/>
-        <Route path="/profile" element={<ProtectedRoutes><Layout><Profile/></Layout></ProtectedRoutes>}/>
-        <Route path="/car/:id" element={<ProtectedRoutes><Layout><CarDetail/></Layout></ProtectedRoutes>}/>
-        <Route path="/booking/" element={<ProtectedRoutes><Layout><BookingList/></Layout></ProtectedRoutes>}/>
-        <Route path="/admin/addcar" element={<AdminRoutes><Layout><AddCar/></Layout></AdminRoutes>}/>
-        <Route path="/admin/editcar/:id" element={<AdminRoutes><Layout><EditCar/></Layout></AdminRoutes>}/>
-        <Route path="/admin/bookings" element={<AdminRoutes><Layout><AdminBookingList/></Layout></AdminRoutes>}/>
-        <Route path="/admin/users" element={<AdminRoutes><Layout><UserList/></Layout></AdminRoutes>}/>
-        
+        <Route path="/" element={<Navigate to="/home" replace />} />
+
+        {/* Protected Routes */}
+        <Route
+          path="/home"
+          element={
+            <AuthProvider>
+              <ProtectedRoutes>
+                <Layout>
+                  <CarList />
+                </Layout>
+              </ProtectedRoutes>
+            </AuthProvider>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <AuthProvider>
+              <ProtectedRoutes>
+                <Layout>
+                  <Profile />
+                </Layout>
+              </ProtectedRoutes>
+            </AuthProvider>
+          }
+        />
+        <Route
+          path="/car/:id"
+          element={
+            <AuthProvider>
+              <ProtectedRoutes>
+                <Layout>
+                  <CarDetail />
+                </Layout>
+              </ProtectedRoutes>
+            </AuthProvider>
+          }
+        />
+        <Route
+          path="/booking/"
+          element={
+            <AuthProvider>
+              <ProtectedRoutes>
+                <Layout>
+                  <BookingList />
+                </Layout>
+              </ProtectedRoutes>
+            </AuthProvider>
+          }
+        />
+        <Route
+          path="/admin/addcar"
+          element={
+            <AuthProvider>
+              <AdminRoutes>
+                <Layout>
+                  <AddCar />
+                </Layout>
+              </AdminRoutes>
+            </AuthProvider>
+          }
+        />
+        <Route
+          path="/admin/editcar/:id"
+          element={
+            <AuthProvider>
+              <AdminRoutes>
+                <Layout>
+                  <EditCar />
+                </Layout>
+              </AdminRoutes>
+            </AuthProvider>
+          }
+        />
+        <Route
+          path="/admin/bookings"
+          element={
+            <AuthProvider>
+              <AdminRoutes>
+                <Layout>
+                  <AdminBookingList />
+                </Layout>
+              </AdminRoutes>
+            </AuthProvider>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <AuthProvider>
+              <AdminRoutes>
+                <Layout>
+                  <UserList />
+                </Layout>
+              </AdminRoutes>
+            </AuthProvider>
+          }
+        />
       </Routes>
     </Router>
   );

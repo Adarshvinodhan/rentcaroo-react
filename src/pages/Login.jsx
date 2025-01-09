@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import FontAwesome icons
 import { Link } from 'react-router-dom'; 
 import { ImSpinner2 } from 'react-icons/im'; // Import Spinner icon
 
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -48,9 +49,7 @@ const Login = () => {
         password,
       });
       setSuccess('Login successful!');
-      const token = response.data.token;
-      localStorage.setItem('token', token);
-      setTimeout(() => {navigate('/')}, 1000);
+      setTimeout(() => {navigate('/home')}, 1000);
      
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong.');

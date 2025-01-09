@@ -1,13 +1,23 @@
 import axios from 'axios';
 
-// Create an Axios instance
 const api = axios.create({
-  //baseURL: 'http://localhost:3000',//dev
-  baseURL: 'https://car-rental-server-pm4i.onrender.com',//production
+  //baseURL: 'http://localhost:3000', // Dev
+  baseURL: 'https://car-rental-server-pm4i.onrender.com', // Production
 });
 
-// Add the token to headers
-api.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+// Add a request interceptor to dynamically set the Authorization header
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    // Handle errors during request setup
+    return Promise.reject(error);
+  }
+);
 
-// Use `api` instead of `axios` for requests
 export default api;

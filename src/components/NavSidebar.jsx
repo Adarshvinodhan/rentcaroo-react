@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const NavSidebar = () => {
-  const { user, loading } = useAuth(); // Get user and loading from context
+  const { user, loading } = useAuth(); 
   const navigate = useNavigate();
   const location = useLocation(); // To handle active links
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +15,7 @@ const NavSidebar = () => {
   // Logout Handler
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/");
   };
 
   // Loading Spinner
@@ -55,7 +55,7 @@ const NavSidebar = () => {
 
           {/* Logo */}
           <div className="flex-1 text-center text-2xl font-bold text-black sm:text-left">
-            <Link to="/home" className="hover:text-gray-700 transition duration-200">
+            <Link to="/cars" className="hover:text-gray-700 transition duration-200">
               Rent<span className="text-blue-600 italic">Caroo</span>
             </Link>
           </div>
@@ -86,7 +86,7 @@ const NavSidebar = () => {
               <>
                 <li>
                   <Link
-                    to="/home"
+                    to="/cars"
                     className={linkClass("/")}
                     onClick={() => setIsOpen(false)}
                   >

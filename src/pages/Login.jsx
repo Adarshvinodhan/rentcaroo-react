@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../axios';
 import { useNavigate } from 'react-router-dom'; 
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import FontAwesome icons
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 import { Link } from 'react-router-dom'; 
-import { ImSpinner2 } from 'react-icons/im'; // Import Spinner icon
+import { ImSpinner2 } from 'react-icons/im'; 
 
 
 const Login = () => {
@@ -43,18 +43,19 @@ const Login = () => {
     const { email, password } = formData;
 
     try {
-      // Make API request
-      const response = await axios.post('https://car-rental-server-pm4i.onrender.com/api/auth/login', {
+      const response = await api.post('/api/auth/login', {
         email,
         password,
       });
       setSuccess('Login successful!');
-      setTimeout(() => {navigate('/home')}, 1000);
+      localStorage.setItem('token', response.data.token);
+      console.log(response.data.token);
+      setTimeout(() => {navigate('/cars')}, 1000);
      
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong.');
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false); 
     }
   };
 

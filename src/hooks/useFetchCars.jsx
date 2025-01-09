@@ -9,8 +9,6 @@ const useFetchCars = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const token = localStorage.getItem('token');
-        if(!token)return;
         const response = await api.get('/api/cars');
         setCars(response.data);
       } catch (err) {

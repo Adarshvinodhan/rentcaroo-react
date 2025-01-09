@@ -20,14 +20,13 @@ function App() {
     <Router>
       <Routes>
         {/* Public Routes */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/unauthorized" element={<h1>Unauthorized</h1>} />
-        <Route path="/" element={<Navigate to="/home" replace />} />
+        <Route path="/unauthorized" element={<h1>Unauthorized</h1>}/>
 
         {/* Protected Routes */}
         <Route
-          path="/home"
+          path="/cars"
           element={
             <AuthProvider>
               <ProtectedRoutes>

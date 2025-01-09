@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
                   email: decoded.email,
                   role: decoded.role
                  });
+                 console.log(decoded);
       } catch (error) {
         console.error("Error decoding token:", error);
       }

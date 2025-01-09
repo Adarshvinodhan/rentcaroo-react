@@ -24,7 +24,7 @@ const AdminBookingList = () => {
   if (loading) return <div className="text-center mt-10">Loading...</div>;
 
   return (
-    <div className="pl-64 pt-16">
+    <div className="sm:pl-64 sm:pt-16">
       <h2 className="text-2xl font-bold mb-4">All Bookings</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {bookings.map((booking) => (

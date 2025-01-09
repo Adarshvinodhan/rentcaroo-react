@@ -49,7 +49,6 @@ const Login = () => {
       });
       setSuccess('Login successful!');
       localStorage.setItem('token', response.data.token);
-      console.log(response.data.token);
       setTimeout(() => {navigate('/cars')}, 1000);
      
     } catch (err) {

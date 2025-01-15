@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
                   email: decoded.email,
                   role: decoded.role
                  });
+                localStorage.setItem("role", decoded.role);
       } catch (error) {
         console.error("Error decoding token:", error);
       }

@@ -74,8 +74,6 @@ const Login = () => {
 
   {/* Login Section */}
   <div className="relative z-20 w-full max-w-md bg-transparent rounded-lg shadow-lg p-8 border border-gray-200">
-    <h2 className="mb-6 text-3xl font-bold text-center text-gray-900">Login</h2>
-
     {/* Error and Success Messages */}
     {error && (
       <p className="mb-4 text-sm text-red-600 border border-red-300 bg-red-50 rounded-md p-2">
@@ -172,7 +170,6 @@ const Login = () => {
     </div>
   </div>
 </div>
-
   );
 };
 

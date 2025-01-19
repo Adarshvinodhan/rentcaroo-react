@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000', // Dev
-  //baseURL: 'https://car-rental-server-pm4i.onrender.com', // Production
+  //baseURL: 'http://localhost:3000', // Dev
+  baseURL: 'https://car-rental-server-pm4i.onrender.com', // Production
 });
 
 // Add a request interceptor to dynamically set the Authorization header

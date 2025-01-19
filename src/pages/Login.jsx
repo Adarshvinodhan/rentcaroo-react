@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 import { Link } from 'react-router-dom'; 
 import { ImSpinner2 } from 'react-icons/im'; 
+import GoogleButton from '../components/GoogleButton';
 
 
 const Login = () => {
@@ -59,89 +60,119 @@ const Login = () => {
   };
 
   return (
-<div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-4 relative">
-  <div className="absolute top-10 left-10 text-gray-700 z-10">
-    <h1 className="text-4xl font-bold">Welcome to Rent<span className='text-blue-600 italic'>Caroo</span></h1>
-    <p className="mt-4 text-lg font-medium">Stop Asking <span className='font-bold'>"Machi Vandikedaikuma from Now"</span></p>
-    <p className="mt-2 text-sm">Affordable. Reliable. Trust.</p>
+<div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-blue-200 p-4 relative">
+  {/* Welcome Section */}
+  <div className="absolute top-10 left-10 text-gray-800 z-10 max-w-sm">
+    <h1 className="text-4xl font-extrabold leading-tight">
+      Welcome to Rent<span className="text-blue-600 italic">Caroo</span>
+    </h1>
+    <p className="mt-4 text-lg font-medium">
+      Stop Asking <span className="font-bold">"Machi Vandikedaikuma from Now"</span>
+    </p>
+    <p className="mt-2 text-sm text-gray-700">Affordable. Reliable. Trust.</p>
   </div>
 
-  <div className="relative z-20 w-full max-w-md p-8 bg-white rounded-lg shadow-xl border border-gray-300">
-    <h2 className="mb-6 text-3xl font-bold text-center text-black">Login</h2>
+  {/* Login Section */}
+  <div className="relative z-20 w-full max-w-md bg-white rounded-lg shadow-lg p-8 border border-gray-200">
+    <h2 className="mb-6 text-3xl font-bold text-center text-gray-900">Login</h2>
 
-    {error && <p className="mb-4 text-sm text-red-500">{error}</p>}
-    {success && <p className="mb-4 text-sm text-green-500">{success}</p>}
+    {/* Error and Success Messages */}
+    {error && (
+      <p className="mb-4 text-sm text-red-600 border border-red-300 bg-red-50 rounded-md p-2">
+        {error}
+      </p>
+    )}
+    {success && (
+      <p className="mb-4 text-sm text-green-600 border border-green-300 bg-green-50 rounded-md p-2">
+        {success}
+      </p>
+    )}
 
+    {/* Login Form */}
     <form onSubmit={handleSubmit}>
-      <div className="mb-6">
+      {/* Email Input */}
+      <div className="mb-5">
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-          Email
+          Email Address
         </label>
         <input
           type="email"
-          name="email"
           id="email"
+          name="email"
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 mt-2 text-black bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          className="w-full px-4 py-3 mt-2 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
         />
       </div>
 
-      <div className="mb-6 relative">
+      {/* Password Input */}
+      <div className="mb-5 relative">
         <label htmlFor="password" className="block text-sm font-medium text-gray-700">
           Password
         </label>
         <input
-          type={showPassword ? 'text' : 'password'}
-          name="password"
+          type={showPassword ? "text" : "password"}
           id="password"
+          name="password"
           value={formData.password}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 mt-2 text-black bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none pr-12"
+          className="w-full px-4 py-3 mt-2 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none pr-12"
         />
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute top-1/2 transform -translate-y-1/2 right-4 text-gray-500 hover:text-gray-700"
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
         >
           {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
         </button>
       </div>
 
+      {/* Submit Button */}
       <button
         type="submit"
-        className="w-full px-4 py-3 font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-500 focus:ring-2 focus:ring-blue-400 focus:outline-none flex justify-center items-center"
-        disabled={loading} // Disable button during loading
+        className="w-full py-3 font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-blue-500 focus:ring-2 focus:ring-blue-400 focus:outline-none flex justify-center items-center"
+        disabled={loading}
       >
         {loading ? (
           <>
             <ImSpinner2 className="animate-spin mr-2" size={20} /> Logging in...
           </>
         ) : (
-          'Login'
+          "Login"
         )}
       </button>
     </form>
 
-    <button 
+    {/* Admin Login */}
+    <button
       onClick={autofillAdminCredentials}
-      className="w-full mt-4 px-4 py-3 font-semibold text-white bg-gray-600 rounded-lg shadow-md hover:bg-gray-500 focus:ring-2 focus:ring-gray-400 focus:outline-none"
+      className="w-full mt-4 py-3 font-semibold text-white bg-gray-600 rounded-lg shadow-md hover:bg-gray-500 focus:ring-2 focus:ring-gray-400 focus:outline-none"
     >
       Login as Admin
     </button>
 
-    <div className="mt-4 text-center">
+    {/* Google Button */}
+    <div className="mt-4">
+      <GoogleButton />
+    </div>
+
+    {/* Register Link */}
+    <div className="mt-6 text-center">
       <p className="text-sm text-gray-600">
-        Don't have an account?{' '}
-        <Link to="/register" className="text-blue-600 hover:text-blue-700 font-semibold">
+        Don’t have an account?{" "}
+        <Link
+          to="/register"
+          className="text-blue-600 hover:text-blue-700 font-medium"
+        >
           Register here
         </Link>
       </p>
     </div>
   </div>
 </div>
+
   );
 };
 

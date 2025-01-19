@@ -64,7 +64,7 @@ const Login = () => {
   {/* Welcome Section */}
   <div className="absolute top-10 left-10 text-gray-800 z-10 max-w-sm">
     <h1 className="text-4xl font-extrabold leading-tight">
-      Welcome to Rent<span className="text-blue-600 italic">Caroo</span>
+      Rent<span className="text-blue-600 italic">Caroo</span>
     </h1>
     <p className="mt-4 text-lg font-medium">
       Stop Asking <span className="font-bold">"Machi Vandikedaikuma from Now"</span>

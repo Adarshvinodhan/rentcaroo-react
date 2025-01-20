@@ -24,7 +24,7 @@ const AddCar = () => {
         try {
             const response = await api.post('/api/car', carData);
             alert('Car added successfully!');
-            window.location.href = '/';
+            window.location.href = '/cars';
             setCarData({
                 make: '',
                 model: '',

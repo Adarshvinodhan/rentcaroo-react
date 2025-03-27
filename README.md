@@ -1,7 +1,7 @@
 **Live:** [rentcaroo.netlify.app](https://rentcaroo.netlify.app)
 Backend Repo:https://github.com/Adarshvinodhan/car-rental-server
 
-##Rentcaroo
+## Rentcaroo
 Rentcaroo is a full-featured car rental system that allows users to browse, rent, and pay for cars online. It includes an admin dashboard for managing cars, users, and bookings. The application is built using the MERN stack with secure authentication and online payments.
 
 ## ✨ Features

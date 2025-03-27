@@ -68,8 +68,5 @@ npm start
 ```
 Now visit [http://localhost:3000](http://localhost:3000) to use Rentcaroo!
 
-## 📜 License
-This project is licensed under the MIT License.
-
 ## 📬 Contact
-For any queries, reach out to [your-email@example.com](mailto:your-email@example.com).
+For any queries, reach out to [your-email@example.com](mailto:adarshvinodhan@gmail.com).
